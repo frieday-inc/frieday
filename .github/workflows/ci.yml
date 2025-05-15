@@ -13,12 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js with pnpm cache
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Install pnpm CLI globally
+        run: npm install -g pnpm
 
       - name: Verify pnpm installation
         run: pnpm --version
