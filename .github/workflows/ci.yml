@@ -13,20 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Cache turbo build output
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-
-      - name: Install pnpm CLI globally
-        run: npm install -g pnpm
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Verify pnpm installation
-        run: |
-          pnpm --version
-          echo "PATH: $PATH"
+        run: pnpm --version
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
