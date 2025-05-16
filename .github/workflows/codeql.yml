@@ -1,7 +1,10 @@
-name: CodeQL Analysis
+name: 'CodeQL Analysis'
 
 on:
-  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   actions: read

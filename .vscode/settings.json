@@ -1,7 +1,12 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ]
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "tailwindCSS.classAttributes": ["class", "className", "classList"],
+  "tailwindCSS.classFunctions": ["clsx", "cva", "cx"]
 }
