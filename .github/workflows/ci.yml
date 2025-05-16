@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  lint:
+    needs: setup
+    uses: ./.github/workflows/lint.yml
+
+  type-check:
+    needs: setup
+    uses: ./.github/workflows/type-check.yml
+
+  build:
+    needs: [lint, type-check]
+    uses: ./.github/workflows/build.yml
+
+  deploy:
+    needs: build
+    uses: ./.github/workflows/deploy.yml

@@ -1,5 +1,6 @@
-name: setup-nodejs
-description: Setup Node.js version
+name: Setup Node.js and pnpm
+
+description: Node.js & pnpm setup for Turborepo
 
 inputs:
   node-version:
@@ -10,10 +11,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
     - uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        cache: pnpm
-    - name: Enable corepack
+        cache: 'pnpm'
+
+    - run: corepack enable
       shell: bash
-      run: corepack enable
+
+    - run: pnpm install
+      shell: bash
