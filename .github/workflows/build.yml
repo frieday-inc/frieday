@@ -2,7 +2,8 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -10,18 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v4
+      - uses: ./.github/actions/setup-nodejs
         with:
-          version: 9
-          run_install: false
+          node-version: '18'
 
-      - uses: actions/setup-node@v4
+      - uses: ./.github/actions/setup-pnpm
         with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
+          version: '9'
 
-      - run: corepack enable
       - run: pnpm install
-      - run: pnpm build
+
+      - run: pnpm run build
