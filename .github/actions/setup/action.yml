@@ -1,19 +1,7 @@
-name: Setup Node.js and pnpm
-
-description: Node.js & pnpm setup for Turborepo
-
-inputs:
-  node-version:
-    description: Node.js version
-    required: false
-    default: '18'
-
 runs:
   using: "composite"
   steps:
     - uses: pnpm/action-setup@v4
-      with:
-        version: 9
 
     - uses: actions/setup-node@v4
       with:
