@@ -14,11 +14,11 @@ jobs:
     uses: ./.github/workflows/lint.yml
 
   type-check:
-    needs: setup
+    needs: lint
     uses: ./.github/workflows/type-check.yml
 
   build:
-    needs: [lint, type-check]
+    needs: type-check
     uses: ./.github/workflows/build.yml
 
   deploy:
