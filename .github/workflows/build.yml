@@ -1,26 +1,13 @@
 name: Build
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_call:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
 
-      - uses: ./.github/actions/setup-nodejs
-        with:
-          node-version: '18'
-
-      - uses: ./.github/actions/setup-pnpm
-        with:
-          version: '9'
-
-      - run: pnpm install
-
-      - run: pnpm run build
+      - run: pnpm build
