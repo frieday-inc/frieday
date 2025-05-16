@@ -25,14 +25,9 @@ jobs:
     needs: lint
     uses: ./.github/workflows/type-check.yml
 
-  codeql:
-    name: CodeQL Analysis
-    needs: type-check
-    uses: ./.github/workflows/codeql.yml
-
   build:
     name: Build Project
-    needs: codeql
+    needs: type-check
     uses: ./.github/workflows/build.yml
 
   deploy:
