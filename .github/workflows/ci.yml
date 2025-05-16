@@ -7,20 +7,25 @@ on:
 
 jobs:
   setup:
+    name: Setup Environment
     uses: ./.github/workflows/setup.yml
 
   lint:
+    name: Lint Codebase
     needs: setup
     uses: ./.github/workflows/lint.yml
 
   type-check:
+    name: Type Checking
     needs: lint
     uses: ./.github/workflows/type-check.yml
 
   build:
+    name: Build Project
     needs: type-check
     uses: ./.github/workflows/build.yml
 
   deploy:
+    name: Deploy Application
     needs: build
     uses: ./.github/workflows/deploy.yml
