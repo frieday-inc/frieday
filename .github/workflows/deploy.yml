@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup-nodejs
+
+      - uses: ./.github/actions/setup-pnpm
+
+      - run: pnpm install
+
+      - run: pnpm run build
+
+      - run: |
+          echo "deploy commands here"
