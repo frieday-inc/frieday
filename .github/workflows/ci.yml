@@ -1,45 +1,34 @@
 name: CI Pipeline
 
 on:
-  pull_request:
+  push:
     branches: [main]
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
 
 jobs:
+  setup:
+    name: Setup Environment
+    uses: ./.github/workflows/setup.yml
+
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm check:lint
+    name: Lint Codebase
+    needs: setup
+    uses: ./.github/workflows/lint.yml
 
   type-check:
+    name: Type Checking
     needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm check:types
+    uses: ./.github/workflows/type-check.yml
 
   build:
+    name: Build Project
     needs: type-check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm build
+    uses: ./.github/workflows/build.yml
 
   check-changeset:
     needs: build
