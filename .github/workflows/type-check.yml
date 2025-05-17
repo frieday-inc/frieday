@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
 
-      - run: pnpm check-types
+      - run: pnpm check:types

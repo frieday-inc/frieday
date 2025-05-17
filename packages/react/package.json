@@ -1,0 +1,52 @@
+{
+  "name": "@repo/react",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "check:lint": "eslint . --max-warnings 0",
+    "check:types": "tsc --noEmit",
+    "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate:component": "turbo gen react-component",
+    "sort:package-json": "pnpm dlx sort-package-json"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "postcss": "^8.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@turbo/gen": "^2.5.0",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "@vitest/browser": "^3.1.3",
+    "@vitest/coverage-v8": "^3.1.3",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-import-resolver-typescript": "^4.3.4",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sonarjs": "^3.0.2",
+    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-turbo": "^2.5.0",
+    "playwright": "^1.52.0",
+    "prettier": "^3.5.3",
+    "prettier-eslint": "^16.4.2",
+    "sort-package-json": "^3.2.1",
+    "turbo": "^2.5.3",
+    "typescript": "5.8.2",
+    "vitest": "^3.1.3"
+  }
+}

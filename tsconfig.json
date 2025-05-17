@@ -15,5 +15,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022"
-  }
+  },
+  "include": ["**/*.config.ts", ".storybook/**/*", "stories/**/*", "packages/react/src/**/*"],
+  "exclude": ["node_modules"]
 }
