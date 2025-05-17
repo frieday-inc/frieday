@@ -1,0 +1,48 @@
+name: Changeset
+
+on:
+  workflow_call:
+
+jobs:
+  changeset:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Setup Project
+        uses: ./.github/actions/setup
+
+      - name: Check for package changes
+        id: filter
+        run: |
+          echo "Checking which files have changed compared to origin/main..."
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD || true)
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          AFFECTED_PACKAGES=$(echo "$CHANGED_FILES" | grep '^packages/' || true)
+
+          if [ -z "$AFFECTED_PACKAGES" ]; then
+            echo "No changes in packages/, skipping version bump."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Changes detected in packages/, continuing..."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 🧾 Commit version and changelog updates
+        if: steps.filter.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No version bump needed"
+          else
+            git commit -m "chore(release): bump version and update changelog"
