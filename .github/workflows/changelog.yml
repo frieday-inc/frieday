@@ -1,0 +1,25 @@
+name: Generate Changelog
+
+on:
+  workflow_call:
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create or update Release Draft
+        uses: release-drafter/release-drafter@v5
+        with:
+          config-name: release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

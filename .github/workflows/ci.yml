@@ -30,7 +30,12 @@ jobs:
     needs: type-check
     uses: ./.github/workflows/build.yml
 
-  deploy:
-    name: Deploy Application
+  version:
+    name: Version Bump & Changelog Update
     needs: build
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/version.yml
+
+  changelog:
+    name: Generate Changelog / Release Notes
+    needs: version
+    uses: ./.github/workflows/changelog.yml
