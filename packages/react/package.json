@@ -6,32 +6,20 @@
     "./*": "./src/*.tsx"
   },
   "scripts": {
-    "build:storybook": "storybook build",
     "check:lint": "eslint . --max-warnings 0",
     "check:types": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
     "generate:component": "turbo gen react-component",
     "sort-package-json": "pnpm dlx sort-package-json"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.7",
-    "@tailwindcss/postcss": "^4.1.7",
     "postcss": "^8.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tailwindcss": "^4.1.7"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3",
     "@eslint/eslintrc": "^3.3.1",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/addon-onboarding": "^8.6.14",
-    "@storybook/blocks": "^8.6.14",
-    "@storybook/experimental-addon-test": "^8.6.14",
-    "@storybook/react": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@storybook/test": "^8.6.14",
     "@turbo/gen": "^2.5.0",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
@@ -56,7 +44,6 @@
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.4.2",
     "sort-package-json": "^3.2.1",
-    "storybook": "^8.6.14",
     "turbo": "^2.5.3",
     "typescript": "5.8.2",
     "vitest": "^3.1.3"

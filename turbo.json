@@ -4,10 +4,6 @@
     "check:types": {
       "dependsOn": ["^check:types"]
     },
-    "storybook": {
-      "cache": false,
-      "persistent": true
-    },
     "check:lint": {
       "dependsOn": ["^lint"]
     },
