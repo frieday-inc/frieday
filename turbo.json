@@ -1,14 +1,14 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "check:types": {
+      "dependsOn": ["^check:types"]
     },
-    "dev": {
+    "storybook": {
       "cache": false,
       "persistent": true
     },
-    "lint": {
+    "check:lint": {
       "dependsOn": ["^lint"]
     },
     "sort-package-json": {

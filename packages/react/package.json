@@ -6,16 +6,21 @@
     "./*": "./src/*.tsx"
   },
   "scripts": {
-    "build-storybook": "storybook build",
-    "check-types": "tsc --noEmit",
+    "build:storybook": "storybook build",
+    "check:lint": "eslint . --max-warnings 0",
+    "check:types": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint . --max-warnings 0",
-    "sort-package-json": "pnpm dlx sort-package-json",
-    "storybook": "storybook dev -p 6006"
+    "sort-package-json": "pnpm dlx sort-package-json"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.7",
+    "postcss": "^8.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",

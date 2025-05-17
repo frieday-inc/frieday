@@ -1,10 +1,10 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import parserTs from '@typescript-eslint/parser';
+import parserTypescript from '@typescript-eslint/parser';
 import pluginImport from 'eslint-plugin-import';
 import pluginSonarjs from 'eslint-plugin-sonarjs';
-import pluginTs from '@typescript-eslint/eslint-plugin';
+import pluginTypescript from '@typescript-eslint/eslint-plugin';
 import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -18,7 +18,7 @@ const eslintConfig = [
   ...compat.extends('plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'),
   {
     plugins: {
-      '@typescript-eslint': pluginTs,
+      '@typescript-eslint': pluginTypescript,
       import: pluginImport,
       sonarjs: pluginSonarjs,
     },
@@ -66,15 +66,10 @@ const eslintConfig = [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      parser: parserTs,
+      parser: parserTypescript,
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
-        },
       },
     },
   },

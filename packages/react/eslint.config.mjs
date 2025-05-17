@@ -1,13 +1,13 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import parserTs from '@typescript-eslint/parser';
+import parserTypescript from '@typescript-eslint/parser';
 import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginSonarjs from 'eslint-plugin-sonarjs';
-import pluginTs from '@typescript-eslint/eslint-plugin';
+import pluginTypescript from '@typescript-eslint/eslint-plugin';
 import pluginTurbo from 'eslint-plugin-turbo';
 import { FlatCompat } from '@eslint/eslintrc';
 
@@ -30,7 +30,7 @@ const eslintConfig = [
   ),
   {
     plugins: {
-      '@typescript-eslint': pluginTs,
+      '@typescript-eslint': pluginTypescript,
       'jsx-a11y': pluginJsxA11y,
       'react-hooks': pluginReactHooks,
       import: pluginImport,
@@ -40,17 +40,11 @@ const eslintConfig = [
     },
     rules: {
       ...pluginSonarjs.configs.recommended.rules,
+
       'prettier/prettier': 'error',
       'react/jsx-props-no-spreading': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/require-default-props': 'off',
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-          unnamedComponents: 'arrow-function',
-        },
-      ],
       'import/no-extraneous-dependencies': [
         'error',
         {
@@ -76,6 +70,21 @@ const eslintConfig = [
           'newlines-between': 'always',
         },
       ],
+      'no-use-before-define': [
+        'error',
+        {
+          functions: true,
+          classes: true,
+          variables: true,
+        },
+      ],
+      'react/function-component-definition': [
+        'error',
+        {
+          namedComponents: 'arrow-function',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
     },
     settings: {
       react: {
@@ -95,15 +104,15 @@ const eslintConfig = [
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
-      parser: parserTs,
+      parser: parserTypescript,
       parserOptions: {
-        ecmaVersion: 2020,
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+        ecmaVersion: 12,
         sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
         },
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
       },
     },
   },
