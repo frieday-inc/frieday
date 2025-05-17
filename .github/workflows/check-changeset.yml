@@ -14,9 +14,6 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Setup Project
-        uses: ./.github/actions/setup
-
       - name: Check for package changes
         id: filter
         run: |
@@ -36,7 +33,7 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: 🧾 Commit version and changelog updates
+      - name: Commit version and changelog updates
         if: steps.filter.outputs.skip == 'false'
         run: |
           git config user.name "github-actions[bot]"
@@ -46,3 +43,4 @@ jobs:
             echo "No version bump needed"
           else
             git commit -m "chore(release): bump version and update changelog"
+          fi
