@@ -7,7 +7,7 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "types": "tsc --noEmit",
+    "type": "tsc --noEmit",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
     "generate:component": "turbo gen react-component",
     "sort:package-json": "pnpm dlx sort-package-json"

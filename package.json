@@ -5,7 +5,7 @@
     "build": "pnpm run build:storybook",
     "build:storybook": "storybook build",
     "lint": "turbo run lint",
-    "types": "turbo run types",
+    "type": "turbo run type",
     "dev:storybook": "storybook dev -p 6006",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
