@@ -1,41 +1,55 @@
 name: CI Pipeline
 
 on:
-  push:
-    branches: [main]
   pull_request:
-
-permissions:
-  actions: read
-  contents: read
-  security-events: write
+    branches: [main]
 
 jobs:
-  setup:
-    name: Setup Environment
-    uses: ./.github/workflows/setup.yml
-
   lint:
-    name: Lint Codebase
-    needs: setup
-    uses: ./.github/workflows/lint.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm check:lint
 
   type-check:
-    name: Type Checking
     needs: lint
-    uses: ./.github/workflows/type-check.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm check:types
 
   build:
-    name: Build Project
     needs: type-check
-    uses: ./.github/workflows/build.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm build
 
-  version:
-    name: Version Bump & Changelog Update
+  check-changeset:
     needs: build
-    uses: ./.github/workflows/version.yml
-
-  changelog:
-    name: Generate Changelog / Release Notes
-    needs: version
-    uses: ./.github/workflows/changelog.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pnpm install
+      - name: Verify changeset exists
+        run: |
+          if [ -z "$(git diff --name-only origin/main...HEAD | grep '.changeset')" ]; then
+            echo "No changeset found! Please add one."
+            exit 1
+          fi
