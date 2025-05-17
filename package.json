@@ -4,11 +4,13 @@
   "scripts": {
     "build": "pnpm run build:storybook",
     "build:storybook": "storybook build",
-    "check:lint": "eslint . --max-warnings 0 && turbo run check:lint",
+    "check:lint": "turbo run check:lint",
     "check:types": "turbo run check:types",
     "dev:storybook": "storybook dev -p 6006",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "sort:package-json": "pnpm dlx sort-package-json && turbo run sort-package-json"
+    "pre-commit": "lint-staged",
+    "prepare": "husky install",
+    "sort:package-json": "pnpm dlx sort-package-json && turbo run sort:package-json"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
@@ -17,6 +19,9 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
     "@eslint/eslintrc": "^3.3.1",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-onboarding": "^8.6.14",
@@ -35,11 +40,14 @@
     "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-storybook": "^0.12.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.0.0",
     "playwright": "^1.52.0",
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.4.2",
     "sort-package-json": "^3.2.1",
     "storybook": "^8.6.14",
+    "ts-node": "^10.9.2",
     "turbo": "^2.5.3",
     "typescript": "5.8.2",
     "vitest": "^3.1.3"
