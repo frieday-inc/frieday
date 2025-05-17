@@ -17,13 +17,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node and pnpm
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
-      - run: pnpm install
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup
 
       - name: Run changeset version
         run: pnpm changeset version
@@ -46,6 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Create or update Release Draft
         uses: release-drafter/release-drafter@v5
         with:
