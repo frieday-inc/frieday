@@ -4,11 +4,13 @@ on:
   workflow_call:
 
 jobs:
-  check:
+  check-changeset:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
+
+      - name: Fetch origin main branch
+        run: git fetch origin main
 
       - name: Verify changeset exists
         run: |
