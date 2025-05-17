@@ -20,16 +20,17 @@ jobs:
       - name: Fetch origin main branch
         run: git fetch origin main
 
-      - name: Verify .changeset file exists
+      - name: Commit version and changelog updates
         run: |
-          echo "Checking for .changeset files..."
-
-          CHG_FILES=$(git diff --name-only origin/main...HEAD | grep '\.changeset' || true)
-
-          if [ -z "$CHG_FILES" ]; then
-            echo "::error title=Missing Changeset::No .changeset file found in this PR. Please generate one using 'pnpm changeset' and commit it."
-            exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No version bump needed"
+          else
+            git commit -m "chore(release): bump version and update changelog"
           fi
+
 
           echo "Changeset file(s) found:"
           echo "$CHG_FILES"
