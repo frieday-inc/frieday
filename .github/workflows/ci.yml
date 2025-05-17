@@ -11,13 +11,8 @@ permissions:
   security-events: write
 
 jobs:
-  setup:
-    name: Setup Environment
-    uses: ./.github/workflows/setup.yml
-
   lint:
     name: Lint Codebase
-    needs: setup
     uses: ./.github/workflows/lint.yml
 
   type-check:
@@ -30,7 +25,7 @@ jobs:
     needs: type-check
     uses: ./.github/workflows/build.yml
 
-  deploy:
-    name: Deploy Application
+  check-changeset:
+    name: Check Changeset
     needs: build
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/check-changeset.yml

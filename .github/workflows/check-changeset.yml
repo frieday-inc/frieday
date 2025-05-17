@@ -1,0 +1,35 @@
+name: Check Changeset
+
+on:
+  workflow_call:
+
+jobs:
+  check-changeset:
+    name: Check Changeset
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: ./.github/actions/setup
+
+      - name: Fetch origin main branch
+        run: git fetch origin main
+
+      - name: Verify .changeset file exists
+        run: |
+          echo "Checking for .changeset files..."
+
+          CHG_FILES=$(git diff --name-only origin/main...HEAD | grep '\.changeset' || true)
+
+          if [ -z "$CHG_FILES" ]; then
+            echo "::error title=Missing Changeset::No .changeset file found in this PR. Please generate one using 'pnpm changeset' and commit it."
+            exit 1
+          fi
+
+          echo "Changeset file(s) found:"
+          echo "$CHG_FILES"
