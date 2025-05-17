@@ -102,7 +102,7 @@ const eslintConfig = [
     },
   },
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: parserTypescript,
       parserOptions: {

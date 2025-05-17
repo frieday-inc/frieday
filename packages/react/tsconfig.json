@@ -5,6 +5,6 @@
     "jsx": "react-jsx",
     "outDir": "dist"
   },
-  "include": ["src", "**/*.config.ts"],
+  "include": ["**/*.config.ts", "src"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
+    "check:lint": {
+      "dependsOn": ["^check:lint"]
+    },
     "check:types": {
       "dependsOn": ["^check:types"]
     },
-    "check:lint": {
-      "dependsOn": ["^lint"]
-    },
-    "sort-package-json": {
+    "sort:package-json": {
       "cache": false
     }
   },

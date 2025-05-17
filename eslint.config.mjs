@@ -68,12 +68,17 @@ const eslintConfig = [
     },
   },
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: parserTypescript,
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
+        ecmaVersion: 12,
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
   },
