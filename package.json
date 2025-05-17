@@ -9,7 +9,9 @@
     "dev:storybook": "storybook dev -p 6006",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
-    "sort:package-json": "pnpm dlx sort-package-json && turbo run sort:package-json"
+    "sort:package-json": "pnpm dlx sort-package-json && turbo run sort:package-json",
+    "changeset": "changeset",
+    "changeset:version": "changeset version"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
