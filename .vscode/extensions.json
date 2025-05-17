@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "austenc.tailwind-docs",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "sonarsource.sonarlint-vscode",
+    "trapfether.tailwind-raw-reorder"
+  ]
+}
