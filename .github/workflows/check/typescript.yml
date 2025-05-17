@@ -1,13 +1,13 @@
-name: Setup
+name: Typescript
 
 on:
   workflow_call:
 
 jobs:
-  setup:
+  type-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
 
-      - name: Setup Node.js and pnpm
-        uses: ./.github/actions/setup
+      - run: pnpm check:types
