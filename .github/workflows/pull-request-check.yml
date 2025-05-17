@@ -7,19 +7,19 @@ on:
 jobs:
   lint:
     name: 🔧 Lint Code
-    uses: ./.github/workflows/check/lint.yml
+    uses: ./.github/workflows/check-lint.yml
 
   type-check:
     name: 🧪 TypeScript Type Check
     needs: lint
-    uses: ./.github/workflows/check/typescript.yml
+    uses: ./.github/workflows/check-typescript.yml
 
   build:
     name: 🚀 Build Project
     needs: type-check
-    uses: ./.github/workflows/check/build.yml
+    uses: ./.github/workflows/check-build.yml
 
   check-changeset:
     name: 📝 Changeset Check
     needs: build
-    uses: ./.github/workflows/check/changeset.yml
+    uses: ./.github/workflows/check-changeset.yml
