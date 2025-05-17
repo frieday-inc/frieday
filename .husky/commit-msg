@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx ts-node --transpile-only ./node_modules/.bin/commitlint --edit "$1"
+npx commitlint --edit "$1" --config commitlint.config.ts --require @swc/register

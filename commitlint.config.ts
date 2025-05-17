@@ -1,4 +1,6 @@
-const commitlintConfig = {
+import type { UserConfig } from '@commitlint/types';
+
+const commitlintConfig: UserConfig = {
   extends: ['@commitlint/config-conventional'],
   helpUrl: 'https://www.conventionalcommits.org/en/v1.0.0',
   rules: {
