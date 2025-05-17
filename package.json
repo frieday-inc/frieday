@@ -4,8 +4,8 @@
   "scripts": {
     "build": "pnpm run build:storybook",
     "build:storybook": "storybook build",
-    "check:lint": "turbo run check:lint",
-    "check:types": "turbo run check:types",
+    "lint": "turbo run lint",
+    "types": "turbo run types",
     "dev:storybook": "storybook dev -p 6006",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",

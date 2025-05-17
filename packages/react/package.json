@@ -6,8 +6,8 @@
     "./*": "./src/*.tsx"
   },
   "scripts": {
-    "check:lint": "eslint . --max-warnings 0",
-    "check:types": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "types": "tsc --noEmit",
     "format:prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
     "generate:component": "turbo gen react-component",
     "sort:package-json": "pnpm dlx sort-package-json"
