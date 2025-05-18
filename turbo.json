@@ -4,8 +4,8 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "types": {
-      "dependsOn": ["^types"]
+    "type": {
+      "dependsOn": ["^type"]
     },
     "sort:package-json": {
       "cache": false
