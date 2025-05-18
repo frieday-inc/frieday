@@ -14,18 +14,11 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+      - name: Install
+        uses: ./.github/common-actions/install
 
       - name: Install dependencies
         run: pnpm install
@@ -34,7 +27,6 @@ jobs:
         run: pnpm changeset version
 
       - name: Setup Git user for commit automation
-        shell: bash
         run: |
           git config --global user.email "anuchit.boonsom@gmail.com"
           git config --global user.name "Joe Takara"
@@ -44,8 +36,3 @@ jobs:
           git add .
           git commit -m "chore(release): version packages"
           git push
-
-      - name: Publish packages
-        run: pnpm publish --access public
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
