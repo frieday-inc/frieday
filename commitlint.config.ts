@@ -10,7 +10,7 @@ const commitlintConfig: UserConfig = {
     'type-enum': [
       2,
       'always',
-      ['feat', 'fix', 'refactor', 'build', 'test', 'ci', 'chore', 'docs', 'style', 'perf', 'revert'],
+      ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test'],
     ],
   },
 };
