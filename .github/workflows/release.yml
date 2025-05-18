@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Version and Commit Changeset
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm install
+
+      - name: Check if .changeset directory exists and is not empty
+        id: changeset_check
+        run: echo "changeset_exists=$( [ -d .changeset ] && [ \"$(ls -A .changeset)\" ] && echo true || echo false )" >> $GITHUB_OUTPUT
+
+      - name: Run changeset version
+        if: steps.changeset_check.outputs.changeset_exists == 'true'
+        run: pnpm changeset version
+
+      - name: Commit version update and .changeset deletion
+        if: steps.changeset_check.outputs.changeset_exists == 'true'
+        run: |
+          git add .
+          git commit -m "chore: version bump & cleanup .changeset [skip ci]" || echo "No changes to commit"
+          git push
