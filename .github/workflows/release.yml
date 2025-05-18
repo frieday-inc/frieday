@@ -17,8 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install
-        uses: ./.github/common-actions/install
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Install dependencies
         run: pnpm install
