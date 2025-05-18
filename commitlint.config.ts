@@ -6,6 +6,7 @@ const commitlintConfig: UserConfig = {
   rules: {
     'type-case': [2, 'always', 'lower-case'],
     'subject-case': [2, 'always', 'lower-case'],
+    'subject-full-stop': [2, 'always', '.'],
     'type-enum': [
       2,
       'always',
