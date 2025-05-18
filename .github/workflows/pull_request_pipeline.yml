@@ -6,14 +6,14 @@ on:
 jobs:
   lint:
     name: Lint Code
-    uses: ./.github/workflows/check-lint.yml
+    uses: ./.github/actions/check/lint.yml
 
   type:
     name: Type Check
     needs: lint
-    uses: ./.github/workflows/check-type.yml
+    uses: ./.github/actions/check/type.yml
 
   build:
     name: Build Project
     needs: [type, lint]
-    uses: ./.github/workflows/check-build.yml
+    uses: ./.github/actions/check/build.yml
