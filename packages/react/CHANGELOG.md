@@ -1,5 +1,11 @@
 # @repo/react
 
+## 0.0.6
+
+### Patch Changes
+
+- 6715d5c: changesetchangesetchangesetchangeset
+
 ## 0.0.5
 
 ### Patch Changes
