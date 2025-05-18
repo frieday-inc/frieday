@@ -1,0 +1,29 @@
+name: 'Setup'
+description: 'Setup Node.js, Corepack, install dependencies, and configure Git user'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Setup Node.js with pnpm cache
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+
+    - name: Enable Corepack for package manager support
+      run: corepack enable
+      shell: bash
+
+    - name: Install project dependencies using pnpm
+      run: pnpm install
+      shell: bash
+
+    - name: Setup Git user for commit automation
+      shell: bash
+      run: |
+        git config --global user.email "anuchit.boonsom@gmail.com"
+        git config --global user.name "Joe Takara"
