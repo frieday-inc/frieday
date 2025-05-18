@@ -1,4 +1,4 @@
-name: Release
+name: Release on Merge
 
 on:
   push:
@@ -6,33 +6,18 @@ on:
       - main
 
 jobs:
-  version-and-publish:
+  release:
+    if: contains(github.event.head_commit.message, 'chore(release)')
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Setup environment
         uses: ./.github/actions/setup
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run changeset version
-        run: pnpm changeset version
-
-      - name: Setup Git user for commit automation
-        run: |
-          git config --global user.email "anuchit.boonsom@gmail.com"
-          git config --global user.name "Joe Takara"
-
-      - name: Commit version bump and changelog
-        run: |
-          git add .
-          git commit -m "chore(release): version packages."
-          git push
+      # - name: Publish to npm
+      #   run: pnpm publish --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

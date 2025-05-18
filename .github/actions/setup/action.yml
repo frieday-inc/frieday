@@ -1,5 +1,5 @@
 name: 'Setup'
-description: 'Setup Node.js, Corepack, install dependencies, and configure Git user'
+description: 'Setup Node.js, Corepack and install dependencies'
 
 runs:
   using: 'composite'
@@ -15,9 +15,7 @@ runs:
         cache: 'pnpm'
 
     - name: Enable Corepack for package manager support
-      shell: bash
       run: corepack enable
 
     - name: Install project dependencies using pnpm
-      shell: bash
       run: pnpm install
