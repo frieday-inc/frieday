@@ -34,5 +34,5 @@ jobs:
       - name: Commit version bump and changelog
         run: |
           git add .
-          git commit -m "chore(release): version packages"
+          git commit -m "chore(release): version packages."
           git push
