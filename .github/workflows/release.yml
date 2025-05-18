@@ -19,8 +19,6 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Create Release Pull Request
-        uses: changesets/action@main
-        with:
-          commit: 'chore(release): version packages.'
+        uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
