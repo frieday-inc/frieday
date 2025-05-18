@@ -6,26 +6,46 @@ on:
       - main
 
 jobs:
-  release:
-    name: Version and Commit Changeset
+  version-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      packages: write
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
-      - run: pnpm install
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Check if .changeset directory exists and is not empty
-        id: changeset_check
-        run: echo "changeset_exists=$( [ -d .changeset ] && [ \"$(ls -A .changeset)\" ] && echo true || echo false )" >> $GITHUB_OUTPUT
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Run changeset version
-        if: steps.changeset_check.outputs.changeset_exists == 'true'
         run: pnpm changeset version
 
-      - name: Commit version update and .changeset deletion
-        if: steps.changeset_check.outputs.changeset_exists == 'true'
+      - name: Setup Git user for commit automation
+        shell: bash
+        run: |
+          git config --global user.email "anuchit.boonsom@gmail.com"
+          git config --global user.name "Joe Takara"
+
+      - name: Commit version bump and changelog
         run: |
           git add .
-          git commit -m "chore: version bump & cleanup .changeset [skip ci]" || echo "No changes to commit"
+          git commit -m "chore(release): version packages"
           git push
+
+      - name: Publish packages
+        run: pnpm publish --access public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

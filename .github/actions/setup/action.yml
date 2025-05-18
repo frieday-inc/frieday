@@ -15,15 +15,9 @@ runs:
         cache: 'pnpm'
 
     - name: Enable Corepack for package manager support
-      run: corepack enable
       shell: bash
+      run: corepack enable
 
     - name: Install project dependencies using pnpm
+      shell: bash
       run: pnpm install
-      shell: bash
-
-    - name: Setup Git user for commit automation
-      shell: bash
-      run: |
-        git config --global user.email "anuchit.boonsom@gmail.com"
-        git config --global user.name "Joe Takara"
