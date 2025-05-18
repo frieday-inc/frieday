@@ -1,16 +1,14 @@
 name: CodeQL
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '0 0 * * 0'
+  push:
+    branches: [main]
 
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
+    name: Analyze with CodeQL
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -36,3 +34,5 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+        with:
+          category: 'Analyze with CodeQL'
