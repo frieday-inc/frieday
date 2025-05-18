@@ -1,0 +1,27 @@
+name: Create Changeset PR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Setup environment
+        uses: ./.github/actions/setup
+
+      - name: Create version bump PR
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          commit: 'chore(release): version packages.'
+          title: 'chore(release): version bump'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

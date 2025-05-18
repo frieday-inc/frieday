@@ -1,5 +1,5 @@
 name: 'Setup'
-description: 'Setup Node.js, Corepack, install dependencies, and configure Git user'
+description: 'Setup Node.js, Corepack, install dependencies'
 
 runs:
   using: 'composite'
