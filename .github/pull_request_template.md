@@ -1,32 +1,66 @@
-# Pull Request Template
-
 <!--
-Thank you for your contribution
+Thank you for contributing to the Frieday project.
 
-Before submitting your commit, please make sure:
-- Commits that add new external dependencies may require additional review.
-- Keep your commit focused and as concise as possible.
-- Each commit should address only one category: docs, feature, refactor, ci, repo, or bugfix.
+Before submitting this pull request, please verify the following:
+- Commits that introduce new external dependencies may require additional scrutiny and approval.
+- Keep each commit focused on a single purpose: such as docs, feature, refactor, ci, chore, or bugfix.
+- Avoid mixing unrelated changes in a single pull request to simplify review and history tracking.
+- Ensure all CI checks pass locally before submitting.
+
+This template is intended to provide clarity and consistency for reviewers and contributors.
+Please fill out each section accurately and thoroughly.
 -->
 
-Closes # <!-- Reference the related GitHub issue number, if applicable -->
+# Title
+
+<!--
+Write a short and clear title that describes the change.
+Recommended format: type(scope): short description
+Example: fix(button): align icon with label
+-->
+
+Closes #
+
+<!--
+If applicable, reference the GitHub issue this PR resolves. Example: Closes #42
+-->
+
+---
 
 ## Description
 
-<!-- Briefly describe the purpose and context of this PR -->
+<!--
+Briefly explain the purpose of this pull request.
+Include context or motivation behind the change and any background information that may help reviewers understand the implementation.
+-->
 
 ## Current Behavior
 
-<!-- Describe the existing behavior or problem being addressed -->
+<!--
+Describe the existing functionality or behavior that this PR is modifying or addressing.
+If the issue is a bug, outline how it manifests or how it can be reproduced.
+-->
 
 ## New Behavior
 
-<!-- Explain the changes or new behavior introduced by this PR -->
+<!--
+Describe the new behavior introduced by this change.
+Mention any added features, fixed bugs, or performance improvements.
+-->
 
-## Breaking Change?
+## Breaking Changes?
 
-<!-- Is this a breaking change? (Yes/No). If Yes, describe the impact and migration steps. -->
+<!--
+Indicate whether this PR introduces any breaking changes.
+If yes, explain the impact, who is affected, and how to migrate or adapt.
+-->
 
 ## Additional Information
 
-<!-- Add any other relevant information or context here -->
+<!--
+Provide any additional context, notes, or considerations relevant to this change.
+This may include:
+- Links to related discussions or RFCs
+- Design decisions or trade-offs
+- Instructions for testing
+-->
