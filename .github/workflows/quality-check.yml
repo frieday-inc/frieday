@@ -33,6 +33,19 @@ jobs:
       - name: Run type check
         run: pnpm type
 
+  format:
+    name: Prettier
+    runs-on: heroui-runner
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+
+      - name: Run prettier
+        run: pnpm format:check
+
   build:
     name: Build Project
     runs-on: ubuntu-latest
