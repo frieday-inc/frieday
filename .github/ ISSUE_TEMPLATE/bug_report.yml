@@ -1,0 +1,111 @@
+name: 'Bug Report'
+title: '[BUG] - Brief summary of the issue'
+description: Report a reproducible bug to help improve the project.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Reporting Guidelines
+
+        This form is for reporting reproducible bugs in the [Frieday repository](https://github.com/frieday-inc/frieday).
+
+        For usage questions, feedback, or ideas, please use:
+        - [Frieday Discussions](https://github.com/frieday-inc/frieday/discussions)
+        - [Frieday Discord](https://discord.gg/gdhSKhhc)
+
+        Before submitting a new report, check for duplicates:
+        - [Open Issues](https://github.com/frieday-inc/frieday/issues?q=is%3Aissue+is%3Aopen)
+        - [Closed Issues](https://github.com/frieday-inc/frieday/issues?q=is%3Aissue+is%3Aclosed)
+        - [Discussions](https://github.com/frieday-inc/frieday/discussions)
+
+        Please provide as much relevant information as possible.
+
+  - type: input
+    id: version
+    attributes:
+      label: Frieday Version
+      description: |
+        Specify the exact version you're using:
+        - For global installs, use the version number (e.g., 2.4.2)
+        - For packages, include the package name and version (e.g., @frieday/button@2.0.34)
+      placeholder: e.g., 2.4.2 or @frieday/button@2.0.34
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Provide a clear and concise description of the issue.
+      placeholder: Describe the unexpected behavior.
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Reproduction Link
+      description: |
+        Provide a link to a minimal reproducible example:
+        - StackBlitz or public GitHub repo preferred
+        - Do not use localhost links
+        - Reference: https://stackoverflow.com/help/mcve
+      placeholder: e.g., https://stackblitz.com/edit/your-example
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Outline the steps to reproduce the issue.
+      placeholder: |
+        1. Navigate to '...'
+        2. Click on '...'
+        3. Scroll to '...'
+        4. Observe the error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Describe what you expected to happen.
+      placeholder: What should have happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots_or_videos
+    attributes:
+      label: Screenshots or Videos
+      description: |
+        If available, attach screenshots or a video to demonstrate the issue.
+        Reference: https://docs.github.com/en/issues/tracking-your-work-with-issues/attaching-files
+      placeholder: Drag and drop files here or use the attachment tool.
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Indicate the OS where the issue was observed.
+      placeholder: e.g., macOS Ventura 13.5, Windows 11, Ubuntu 22.04
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser_type
+    attributes:
+      label: Browser(s) Affected
+      description: Select the browser(s) where the issue occurs.
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other (please specify in description)
+    validations:
+      required: true
