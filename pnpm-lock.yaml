@@ -108,6 +108,9 @@ importers:
       prettier-eslint:
         specifier: ^16.4.2
         version: 16.4.2(typescript@5.8.2)
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.11(prettier@3.5.3)
       sort-package-json:
         specifier: ^3.2.1
         version: 3.2.1
@@ -132,9 +135,6 @@ importers:
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
-        version: 0.6.11(prettier@3.5.3)
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -214,6 +214,9 @@ importers:
       prettier-eslint:
         specifier: ^16.4.2
         version: 16.4.2(typescript@5.8.2)
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.11(prettier@3.5.3)
       sort-package-json:
         specifier: ^3.2.1
         version: 3.2.1
