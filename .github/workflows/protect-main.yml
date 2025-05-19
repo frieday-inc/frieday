@@ -1,0 +1,17 @@
+name: Enforce Canary to Main PRs Only
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if pull request is not from canary
+        run: |
+          if [[ "${{ github.head_ref }}" != "canary" ]]; then
+            echo "::error::Pull requests to 'main' are only allowed from the 'canary' branch."
+            exit 1
+          fi
