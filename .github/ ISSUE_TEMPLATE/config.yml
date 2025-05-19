@@ -1,0 +1,13 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/frieday-inc/frieday/discussions/categories/feature-requests
+    about: Submit proposals for new components or suggest enhancements to existing ones.
+
+  - name: Ask a Question or Share Ideas
+    url: https://github.com/frieday-inc/frieday/discussions
+    about: Engage in detailed discussions, seek usage assistance, or share your ideas.
+
+  - name: Discord Community
+    url: https://discord.gg/gdhSKhhc
+    about: Connect with the Frieday developer community on Discord for technical discussions and support.
