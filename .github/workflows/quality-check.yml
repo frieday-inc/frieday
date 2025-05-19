@@ -1,10 +1,6 @@
 name: Quality Check
 
 on:
-  push:
-    branches:
-      - canary
-
   pull_request:
     branches:
       - canary
