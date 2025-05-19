@@ -1,0 +1,113 @@
+name: 'Bug report'
+title: '[BUG] - YOUR_ISSUE_TITLE_HERE_REPLACE_ME'
+description: Create a report to help us improve
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug
+
+        This issue tracker is for reporting bugs found in the [Frieday GitHub repository](https://github.com/frieday-inc/frieday/).
+
+        If you have a usage question or need help, please use one of the following:
+          - [Frieday Discussions](https://github.com/frieday-inc/frieday/discussions)
+          - [Frieday Discord](https://discord.gg/gdhSKhhc)
+
+        Before submitting a new issue, please check if your problem has already been reported or discussed:
+          - [Open Issues](https://github.com/frieday-inc/frieday/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+          - [Closed Issues](https://github.com/frieday-inc/frieday/issues?q=is%3Aissue+is%3Aclosed+sort%3Aupdated-desc)
+          - [Discussions](https://github.com/frieday-inc/frieday/discussions)
+
+        The more details you provide, the easier it will be for us to help you!
+
+  - type: input
+    id: version
+    attributes:
+      label: Frieday Version
+      description: |
+        Specify the version of Frieday you are using.
+        - For global installs, provide the version only (e.g., 2.4.2).
+        - For package installs, include the package name (e.g., @frieday/button@2.0.34).
+        You can find the version in your project's package.json.
+      placeholder: e.g., 2.4.2 or @frieday/button@2.0.34
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Clearly describe the bug or issue you are experiencing.
+      placeholder: Please provide a concise and clear description of the problem.
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Example Website or App
+      description: |
+        Where did you encounter the bug?
+        - Bugs are resolved faster if we can reproduce them with minimal dependencies (ideally just `@frieday/react`).
+        - You can share a reproducible example using [Stackblitz](https://stackblitz.com/) or a public GitHub repo.
+        - Please avoid localhost URLs.
+        - For tips on creating minimal examples, see: https://stackoverflow.com/help/mcve
+      placeholder: e.g., https://stackblitz.com/edit/your-example OR GitHub repo link
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps needed to reproduce the issue.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll to '...'
+        4. Observe the error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Describe what you expected to happen.
+      placeholder: As a user, I expected ___ but instead I saw ___
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots_or_videos
+    attributes:
+      label: Screenshots or Videos
+      description: |
+        If possible, attach screenshots or a video to help illustrate the problem.
+        For supported file types and size limits, see: https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/attaching-files
+      placeholder: Drag and drop your files here or use the attachment button below.
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system are you using?
+      placeholder: e.g., macOS, Windows, Linux
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser_type
+    attributes:
+      label: Browser(s) Affected
+      description: Select all browsers where you can reproduce the issue.
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other (please specify in the description)
+    validations:
+      required: true
