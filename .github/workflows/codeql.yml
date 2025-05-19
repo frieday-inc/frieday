@@ -3,11 +3,11 @@ name: CodeQL
 on:
   push:
     branches:
-      - main
+      - canary
       - changeset-release/**
   pull_request:
     branches:
-      - main
+      - canary
       - changeset-release/**
 
 jobs:
