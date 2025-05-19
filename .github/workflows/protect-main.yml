@@ -1,4 +1,4 @@
-name: Check Pull Request Source
+name: Enforce Canary to Main PRs Only
 
 on:
   pull_request:

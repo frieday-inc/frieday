@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - canary
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -16,7 +16,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Environment
