@@ -26,7 +26,6 @@ const eslintConfig = [
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:turbo/recommended',
-    'plugin:storybook/recommended',
   ),
   {
     plugins: {

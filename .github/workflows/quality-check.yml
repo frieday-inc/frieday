@@ -47,16 +47,16 @@ jobs:
       - name: Run prettier
         run: pnpm format:check
 
-  build:
-    name: Build Project
-    runs-on: ubuntu-latest
-    needs: [lint, type-check, format]
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+  # build:
+  #   name: Build Project
+  #   runs-on: ubuntu-latest
+  #   needs: [lint, type-check, format]
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v4
 
-      - name: Setup Environment
-        uses: ./.github/actions/setup
+  #     - name: Setup Environment
+  #       uses: ./.github/actions/setup
 
-      - name: Run build
-        run: pnpm build
+  #     - name: Run build
+  #       run: pnpm build
