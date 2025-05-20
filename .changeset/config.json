@@ -1,11 +1,14 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "frieday-inc/frieday" }],
   "commit": false,
   "fixed": [],
   "linked": [],
-  "access": "restricted",
-  "baseBranch": "main",
+  "access": "public",
+  "baseBranch": "canary",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "onlyUpdatePeerDependentsWhenOutOfRange": true
+  },
+  "ignore": ["@frieday/docs"]
 }
